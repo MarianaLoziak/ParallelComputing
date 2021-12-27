@@ -32,7 +32,7 @@ public class Queue<T> {
             Node<T> nextHead = currHead.getNext().get();
             if(currTail == currHead){
                 if(nextHead == null){
-                    throw new NoSuchElementException();
+                    throw new NullPointerException("Queue is empty");
                 } else{
                     tail.compareAndSet(currTail,nextHead);
                 }
@@ -42,6 +42,14 @@ public class Queue<T> {
                     return result;
                 }
             }
+        }
+    }
+
+    public void print(){
+        Node<T> node = head.get();
+        while(node != null){
+            System.out.println(node.getData());
+            node = node.getNext().get();
         }
     }
 }
