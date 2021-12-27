@@ -31,7 +31,6 @@ class QueueTest {
 
         for (int i = 0; i < 10; i++) {
             int res = queue.pop();
-            //System.out.println("Removed" + res);
             result.add(res);
         }
         Collections.sort(data);

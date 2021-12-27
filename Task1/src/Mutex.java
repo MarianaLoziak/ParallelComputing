@@ -38,14 +38,11 @@ public class Mutex {
         }
         waitedThreads.put(current);
 
-        //System.out.println("Waiting: " + Thread.currentThread().getName());
         unlock();
         while(waitedThreads.contains(current)) {
             Thread.yield();
         }
         lock();
-
-        //System.out.println("No waiting: " + Thread.currentThread().getName());
     }
 
     public void casNotify() throws InterruptedException {
@@ -55,7 +52,6 @@ public class Mutex {
         }
 
         waitedThreads.take();
-        System.out.println("");
     }
 
     public void casNotifyAll() throws InterruptedException {

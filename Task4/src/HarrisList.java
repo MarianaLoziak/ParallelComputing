@@ -28,12 +28,12 @@ public class HarrisList<T extends Comparable<? super T>> {
     }
 
     public boolean remove(T key){
-        Node<T> rightNextNode;// = new AtomicMarkableReference(null, false);
+        Node<T> rightNextNode;
         Neighbour<T> neighbour;
 
         while(true){
             neighbour = search(key);
-            if(neighbour.right == tail || !(neighbour.right.key.compareTo(key)==0)){//ключ не знайдено або вже видалено
+            if(neighbour.right == tail || !(neighbour.right.key.compareTo(key)==0)){
                 return false;
             }
 
@@ -45,7 +45,7 @@ public class HarrisList<T extends Comparable<? super T>> {
                 }
             }
         }
-        if(!neighbour.left.next.compareAndSet(neighbour.right,rightNextNode,false, false)){//!!!!!!
+        if(!neighbour.left.next.compareAndSet(neighbour.right,rightNextNode,false, false)){
             neighbour = search(neighbour.right.key);
         }
         return true;

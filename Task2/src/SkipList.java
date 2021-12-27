@@ -31,9 +31,6 @@ public class SkipList {
                     boolean[] markHolder = {false};
                     right = current.next[level].get(markHolder);
                     while(markHolder[0]){
-                        //left = current;
-                        //current = left.next[level].getReference();
-                        //right = current.next[level].get(markHolder);
                         found = left.next[level].compareAndSet(current, right, false, false);
                         if(!found){
                             break;
